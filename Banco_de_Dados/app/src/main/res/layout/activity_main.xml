@@ -10,25 +10,37 @@
 
     <TextView
         android:id="@+id/text_id"
-        android:text="ID: "
+        android:text="Encontrando evento"
         android:gravity="center"
         android:textSize="30sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/editPalavre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Username"
-        android:id="@+id/edit_username"/>
+        android:hint="Palavra Chave" />
 
     <EditText
+        android:id="@+id/editAno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Password"
-        android:id="@+id/edit_password"/>
+        android:hint="ANO" />
+
+    <EditText
+        android:id="@+id/editMes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="MÊS" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonBuscar"
+        android:text="Buscar"/>
 
 
     <ListView

@@ -9,56 +9,43 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textData"
-        android:text="Data do Evento "
+        android:id="@+id/text_id"
+        android:text="Encontrando evento"
         android:gravity="center"
         android:textSize="30sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Cliente"
-        android:id="@+id/editCliente"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Numero"
-        android:id="@+id/editNumero"/>
 
     <EditText
+        android:id="@+id/editPalavre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Endereco"
-        android:id="@+id/editEndereco"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="Descrição do Pacote"
-        android:id="@+id/editDescricao"/>
+        android:hint="Palavra Chave" />
 
     <EditText
-        android:id="@+id/editValor"
+        android:id="@+id/editAno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Valor Final" />
+        android:hint="ANO" />
 
+    <EditText
+        android:id="@+id/editMes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="MÊS" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonUpdate"
-        android:text="Update"/>
+        android:id="@+id/buttonBuscar"
+        android:text="Buscar"/>
 
-    <Button
+
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button_delete"
-        android:text="Delete"/>
-
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

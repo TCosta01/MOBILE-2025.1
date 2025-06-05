@@ -1,4 +1,4 @@
-package com.example.bancodedados
+package com.example.a2banco_de_dados
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,10 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
+import com.example.a2banco_de_dados.databinding.ActivityPesquisarFormularioBinding
 
 class PesquisarFormulario : AppCompatActivity() {
-
     private lateinit var binding: ActivityPesquisarFormularioBinding
     private lateinit var adapter: ArrayAdapter<Utilizador>
     private var pos: Int = -1
@@ -27,8 +26,6 @@ class PesquisarFormulario : AppCompatActivity() {
             insets
         }
 
-
-
         val i = intent
         var position = i.extras?.getInt(("position"))
         var recebeuID = i.extras?.getString("passandoID")
@@ -43,9 +40,9 @@ class PesquisarFormulario : AppCompatActivity() {
         var passandoDia = i.extras?.getString("passandoDia")
 
         var per = passandoPerfil.toString()
-       var di = passandoDia.toString()
-       var me = passandoMes.toString()
-       var an = passandoAno.toString()
+        var di = passandoDia.toString()
+        var me = passandoMes.toString()
+        var an = passandoAno.toString()
 
 
         if (position != null) {
@@ -129,12 +126,6 @@ class PesquisarFormulario : AppCompatActivity() {
                 }
             }
         }
-
-
-
-
-
-
 
     }
 }

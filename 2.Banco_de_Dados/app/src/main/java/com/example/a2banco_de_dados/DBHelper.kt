@@ -1,4 +1,4 @@
-package com.example.bancodedados
+package com.example.a2banco_de_dados
 
 import android.content.ContentValues
 import android.content.Context
@@ -39,7 +39,7 @@ class DBHelper(context: Context) :
     }
 
     // fun utilizadorInsert(username: String, password: String): Long {
-        fun utilizadorInsert(nome: String, perfil: String, numero: String, endereco: String, descricao: String, valor: String, ano: String, mes: String, dia: String): Long {
+    fun utilizadorInsert(nome: String, perfil: String, numero: String, endereco: String, descricao: String, valor: String, ano: String, mes: String, dia: String): Long {
 
         val db = this.writableDatabase
         val contentValues = ContentValues()
@@ -60,13 +60,13 @@ class DBHelper(context: Context) :
         contentValues.put("dia", dia)
 
 
-    val res = db.insert("clientes", null, contentValues)
-    db.close()
-    return res
+        val res = db.insert("clientes", null, contentValues)
+        db.close()
+        return res
     }
 
-      fun utilizadorUpdate(id: Int, nome: String, perfil: String, numero: String, endereco: String, descricao: String, valor: String, ano: String, mes: String, dia: String): Int {
-    //fun utilizadorUpdate(id: Int, username: String, password: String): Int {
+    fun utilizadorUpdate(id: Int, nome: String, perfil: String, numero: String, endereco: String, descricao: String, valor: String, ano: String, mes: String, dia: String): Int {
+        //fun utilizadorUpdate(id: Int, username: String, password: String): Int {
         val db = this.writableDatabase
         val contentValues = ContentValues()
         /*
@@ -112,17 +112,76 @@ class DBHelper(context: Context) :
     }
 
     fun utilizadorListSelectAll(): ArrayList<Utilizador> {
-    val db = this.readableDatabase
+        val db = this.readableDatabase
 
-     val c = db.rawQuery("SELECT * FROM clientes", null)
-    //val c = db.rawQuery("SELECT * FROM utilizador", null)
+        val c = db.rawQuery("SELECT * FROM clientes", null)
+        //val c = db.rawQuery("SELECT * FROM utilizador", null)
 
 
-    val listaUtilizador: ArrayList<Utilizador> = ArrayList()
-    if (c.count > 0) {
-       c.moveToFirst()
-       do {
-           val idIndex = c.getColumnIndex("id")
+        val listaUtilizador: ArrayList<Utilizador> = ArrayList()
+        if (c.count > 0) {
+            c.moveToFirst()
+            do {
+                val idIndex = c.getColumnIndex("id")
+
+                /*
+               val usernameIndex = c.getColumnIndex("username")
+               val passwordIndex = c.getColumnIndex("password")
+               */
+                val nomeIndex = c.getColumnIndex("nome")
+                val perfilIndex = c.getColumnIndex("perfil")
+                val numeroIndex = c.getColumnIndex("numero")
+                val enderecoIndex = c.getColumnIndex("endereco")
+                val descricaoIndex = c.getColumnIndex("descricao")
+                val valorIndex = c.getColumnIndex("valor")
+                val anoIndex = c.getColumnIndex("ano")
+                val mesIndex = c.getColumnIndex("mes")
+                val diaIndex = c.getColumnIndex("dia")
+
+
+                val id = c.getInt(idIndex)
+                /*
+               val username = c.getString(usernameIndex)
+               val password = c.getString(passwordIndex)
+               */
+                val nome = c.getString(nomeIndex)
+                val perfil = c.getString(perfilIndex)
+                val numero = c.getString(numeroIndex)
+                val endereco = c.getString(enderecoIndex)
+                val descricao = c.getString(descricaoIndex)
+                val valor = c.getString(valorIndex)
+                val ano = c.getString(anoIndex)
+                val mes = c.getString(mesIndex)
+                val dia = c.getString(diaIndex)
+
+
+
+                listaUtilizador.add(Utilizador(id, nome, perfil, numero, endereco, descricao, valor, ano, mes, dia))
+                // listaUtilizador.add(Utilizador(id, username, password))
+            } while (c.moveToNext())
+        }
+        db.close()
+        return listaUtilizador
+    }
+
+    fun utilizadorSelectByID(id: Int): Cursor {
+        val db = this.readableDatabase
+
+        return db.rawQuery("SELECT * FROM clientes WHERE id=?", arrayOf(id.toString()))
+        // return db.rawQuery("SELECT * FROM utilizador WHERE id=?", arrayOf(id.toString()))
+    }
+
+    fun utilizadorObjectSelectByID(id: Int): Utilizador {
+        val db = this.readableDatabase
+
+        val c = db.rawQuery("SELECT * FROM clientes WHERE id=?", arrayOf(id.toString()))
+        //val c = db.rawQuery("SELECT * FROM utilizador WHERE id=?", arrayOf(id.toString()))
+
+        var utilizador = Utilizador()
+
+        if (c.count == 1) {
+            c.moveToFirst()
+            val idIndex = c.getColumnIndex("id")
 
             /*
            val usernameIndex = c.getColumnIndex("username")
@@ -139,87 +198,27 @@ class DBHelper(context: Context) :
             val diaIndex = c.getColumnIndex("dia")
 
 
-           val id = c.getInt(idIndex)
+            val id = c.getInt(idIndex)
             /*
            val username = c.getString(usernameIndex)
            val password = c.getString(passwordIndex)
            */
-           val nome = c.getString(nomeIndex)
-           val perfil = c.getString(perfilIndex)
-           val numero = c.getString(numeroIndex)
-           val endereco = c.getString(enderecoIndex)
-           val descricao = c.getString(descricaoIndex)
-           val valor = c.getString(valorIndex)
-           val ano = c.getString(anoIndex)
-           val mes = c.getString(mesIndex)
-           val dia = c.getString(diaIndex)
+            val nome = c.getString(nomeIndex)
+            val perfil = c.getString(perfilIndex)
+            val numero = c.getString(numeroIndex)
+            val endereco = c.getString(enderecoIndex)
+            val descricao = c.getString(descricaoIndex)
+            val valor = c.getString(valorIndex)
+            val ano = c.getString(anoIndex)
+            val mes = c.getString(mesIndex)
+            val dia = c.getString(diaIndex)
 
 
 
-           listaUtilizador.add(Utilizador(id, nome, perfil, numero, endereco, descricao, valor, ano, mes, dia))
-           // listaUtilizador.add(Utilizador(id, username, password))
-       } while (c.moveToNext())
+            utilizador = Utilizador(id, nome, perfil, numero, endereco, descricao, valor, ano, mes, dia)
+
+        }
+        return utilizador
     }
-    db.close()
-    return listaUtilizador
-    }
-
-    fun utilizadorSelectByID(id: Int): Cursor {
-        val db = this.readableDatabase
-
-        return db.rawQuery("SELECT * FROM clientes WHERE id=?", arrayOf(id.toString()))
-        // return db.rawQuery("SELECT * FROM utilizador WHERE id=?", arrayOf(id.toString()))
-    }
-
-    fun utilizadorObjectSelectByID(id: Int): Utilizador {
-            val db = this.readableDatabase
-
-            val c = db.rawQuery("SELECT * FROM clientes WHERE id=?", arrayOf(id.toString()))
-            //val c = db.rawQuery("SELECT * FROM utilizador WHERE id=?", arrayOf(id.toString()))
-
-            var utilizador = Utilizador()
-
-            if (c.count == 1) {
-               c.moveToFirst()
-               val idIndex = c.getColumnIndex("id")
-
-                /*
-               val usernameIndex = c.getColumnIndex("username")
-               val passwordIndex = c.getColumnIndex("password")
-               */
-                    val nomeIndex = c.getColumnIndex("nome")
-                    val perfilIndex = c.getColumnIndex("perfil")
-                    val numeroIndex = c.getColumnIndex("numero")
-                    val enderecoIndex = c.getColumnIndex("endereco")
-                    val descricaoIndex = c.getColumnIndex("descricao")
-                    val valorIndex = c.getColumnIndex("valor")
-                    val anoIndex = c.getColumnIndex("ano")
-                    val mesIndex = c.getColumnIndex("mes")
-                    val diaIndex = c.getColumnIndex("dia")
-
-
-               val id = c.getInt(idIndex)
-                /*
-               val username = c.getString(usernameIndex)
-               val password = c.getString(passwordIndex)
-               */
-                   val nome = c.getString(nomeIndex)
-                   val perfil = c.getString(perfilIndex)
-                   val numero = c.getString(numeroIndex)
-                   val endereco = c.getString(enderecoIndex)
-                   val descricao = c.getString(descricaoIndex)
-                   val valor = c.getString(valorIndex)
-                   val ano = c.getString(anoIndex)
-                   val mes = c.getString(mesIndex)
-                   val dia = c.getString(diaIndex)
-
-
-
-               utilizador = Utilizador(id, nome, perfil, numero, endereco, descricao, valor, ano, mes, dia)
-
-            }
-            return utilizador
-}
 
 }
-

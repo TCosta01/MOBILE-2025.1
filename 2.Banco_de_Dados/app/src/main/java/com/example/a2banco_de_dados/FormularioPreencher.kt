@@ -1,4 +1,4 @@
-package com.example.bancodedados
+package com.example.a2banco_de_dados
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.bancodedados.databinding.ActivityFormularioPreencherBinding
+import com.example.a2banco_de_dados.databinding.ActivityFormularioPreencherBinding
 
 class FormularioPreencher : AppCompatActivity() {
 
@@ -19,14 +19,12 @@ class FormularioPreencher : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityFormularioPreencherBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_formulario_preencher)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         val db = DBHelper(this)
         val listaUtilizadores = db.utilizadorListSelectAll()
         adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listaUtilizadores)
@@ -35,7 +33,7 @@ class FormularioPreencher : AppCompatActivity() {
         binding.buttonReservar.setOnClickListener {
 
 
-           val nome = binding.editCliente.text.toString()
+            val nome = binding.editCliente.text.toString()
             val numero = binding.editNumero.text.toString()
             val endereco = binding.editEndereco.text.toString()
             val descricao = binding.editDescricao.text.toString()
@@ -60,7 +58,5 @@ class FormularioPreencher : AppCompatActivity() {
         binding.buttonEnventos.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
-
-
     }
 }
