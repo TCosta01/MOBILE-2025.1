@@ -15,15 +15,17 @@ class DBHelper(context: Context) :
         "INSERT INTO utilizador (username, password) VALUES ('user','pass');",
         "INSERT INTO utilizador (username, password) VALUES ('admin','pwd');"
          */
+
         "CREATE TABLE clientes (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, perfil TEXT, numero TEXT, endereco TEXT, descricao TEXT, valor TEXT, ano TEXT, mes TEXT, dia TEXT)",
-        "INSERT INTO utilizador (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('bob','traquilo','82999','maceio','bar','900','2026','5','30');",
-        "INSERT INTO utilizador (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('tiago','nao traquilo','6800099','jacarecica','piscina','1000','2024','5','15');",
-        "INSERT INTO utilizador (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('jack','traquilo','8500','serraria','barraco','60','2004','7','25');",
-        "INSERT INTO utilizador (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('valeria','nao traquilo','9900','jacarecica','Pula-Pula','60','2004','5','25');",
-        "INSERT INTO utilizador (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('noemi','traquilo','6800099','maceio','barraco','1000','2024','5','15');",
-        "INSERT INTO utilizador (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('neli','nao traquilo','8500','maceio','piscina','900','2024','7',30');",
-        "INSERT INTO utilizador (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('neila','nao traquilo','82999','serraria','Pula-Pula','60','2026','12','30');",
-        "INSERT INTO utilizador (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('tacio','traquilo','82999','barraco','piscina','900','2026','12','10');"
+        "INSERT INTO clientes (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('bob','traquilo','82999','maceio','bar','900','2026','5','30');",
+        "INSERT INTO clientes (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('tiago','nao traquilo','6800099','jacarecica','piscina','1000','2024','5','15');",
+        "INSERT INTO clientes (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('jack','traquilo','8500','serraria','barraco','60','2004','7','25');",
+        "INSERT INTO clientes (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('valeria','nao traquilo','9900','jacarecica','Pula-Pula','60','2004','5','25');",
+        "INSERT INTO clientes (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('noemi','traquilo','6800099','maceio','barraco','1000','2024','5','15');",
+        "INSERT INTO clientes (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('neli','nao traquilo','8500','maceio','piscina','900','2024','7','30');",
+        "INSERT INTO clientes (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('neila','nao traquilo','82999','serraria','Pula-Pula','60','2026','12','30');",
+        "INSERT INTO clientes (nome, perfil, numero, endereco, descricao, valor, ano, mes, dia) VALUES ('tacio','traquilo','82999','barraco','piscina','900','2026','12','10');"
+
 
     )
 
